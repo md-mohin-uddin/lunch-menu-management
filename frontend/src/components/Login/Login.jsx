@@ -4,6 +4,7 @@ import { AuthContext } from "../AuthContext/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { USER_TYPE_ADMIN, USER_TYPE_EMPLOYEE } from "../../utils/constant";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -21,25 +22,25 @@ const Login = () => {
           password,
         }
       );
-
       // setUserData(response.data.data);
       setToken(response.data.token);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("userData", JSON.stringify(response.data.data));
-      if (response.data.data.user_type === 1) {
+      if (response.data.data.user_type === USER_TYPE_ADMIN) {
         navigate("/dashboard");
       }
-      if (response.data.data.user_type === 2) {
+      if (response.data.data.user_type === USER_TYPE_EMPLOYEE) {
         navigate("/employee");
       }
       toast(response.data.message);
     } catch (error) {
       toast(error?.message);
+
       console.error("Authentication failed:", error);
       setToken(null);
       localStorage.removeItem("token");
-      if (error?.message) {
-        setErrorMessage(error?.message);
+      if (error?.response?.data?.message) {
+        setErrorMessage(error?.response?.data?.message);
       } else {
         setErrorMessage("An unexpected error occurred. Please try again.");
       }
@@ -73,6 +74,7 @@ const Login = () => {
                   className="w-full text-sm px-4 py-3 rounded outline-none border-2 focus:border-blue-500"
                 />
               </div>
+              {errorMessage && <p className="text-red-500">{errorMessage}</p>}
               <div className="flex items-center justify-between gap-4"></div>
               <div className="!mt-10">
                 <button
