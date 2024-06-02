@@ -36,13 +36,13 @@ const loginUser = async (req, res) => {
     let user = await User.findOne({ where: { username: username } });
 
     if (!user) {
-      res.status(500).send({
+      return res.status(500).send({
         status: false,
         code: 500,
         message: "User not found",
       });
     }
-
+    console.log(user);
     user = user.toJSON();
 
     const isPasswordValid = await bcryptjs.compare(password, user.password);

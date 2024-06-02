@@ -12,12 +12,7 @@ const Navbar = () => {
     navigate("/login");
     setToken(null);
   };
-  const handleNavLinkClick = (path) => {
-    if (!token && (path === "/dashboard" || path === "/employee")) {
-      localStorage.setItem("requestedPath", path);
-      navigate("/login");
-    }
-  };
+
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
