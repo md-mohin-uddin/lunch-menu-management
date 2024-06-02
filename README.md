@@ -52,8 +52,8 @@ This system simplifies the process of managing office lunch menus and streamline
 2. Access the application via your web browser.
 
 ## Database schema
+![DB_DIAGRAM](https://github.com/md-mohin-uddin/lunch-menu-management/assets/71177978/67306326-c7eb-4dae-913a-ece411f99cb2)
 
-![DB_DIAGRAM](https://github.com/md-mohin-uddin/mission-2022/assets/71177978/4f566646-d9c9-40c2-88c6-0841be26ec62)
 
 ## SQL File
 1. **Sample Admin**: `username: admin , password: 123456`
