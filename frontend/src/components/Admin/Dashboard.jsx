@@ -18,7 +18,7 @@ function Dashboard() {
     const getMenuList = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/menu/list`,
+          `${import.meta.env.VITE_API_URL}/menu/list-all`,
           {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("token"),
