@@ -6,7 +6,7 @@ const { USER_TYP_EMPLOYEE } = require("../utis/constant");
 // create Model
 const User = db.users;
 
-// create user
+// create/register user
 
 const addUser = async (req, res) => {
   try {

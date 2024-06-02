@@ -14,12 +14,25 @@ const addMenu = async (req, res) => {
     if (newMenu) {
       return res
         .status(200)
-        .send({ status: true, message: "Menu addes successfully" });
+        .send({ status: true, message: "Menu added successfully" });
     }
 
     res.status(500).send({ status: false, message: "Failed to add menu" });
   } catch (err) {
     res.status(500).send({ status: false, message: "Failed to add menu" });
+  }
+};
+
+// for admin
+const getAllMenusForAdmin = async (req, res) => {
+  try {
+    const menus = await Menu.findAll({});
+
+    res.status(200).send(menus);
+  } catch (err) {
+    console.log(err);
+
+    res.status(500).send({ status: false, message: "Something went wrong" });
   }
 };
 
@@ -90,4 +103,5 @@ module.exports = {
   getAllMenus,
   updateMenu,
   deleteMenu,
+  getAllMenusForAdmin,
 };

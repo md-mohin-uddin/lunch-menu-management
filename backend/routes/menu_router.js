@@ -19,6 +19,7 @@ router.put(
 
 // get all menu list
 router.get("/list", menu_controller.getAllMenus);
+router.get("/list-all", menu_controller.getAllMenusForAdmin);
 
 // Menus router
 router.delete(

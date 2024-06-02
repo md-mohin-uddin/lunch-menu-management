@@ -1,15 +1,22 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { format } from "date-fns";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const MenuEdit = ({ menuItemToEdit, setIsEdit }) => {
   const [name, setName] = useState(menuItemToEdit?.name);
+  const [servingDate, setServingDate] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
     if (menuItemToEdit) {
+      console.log({ menuItemToEdit });
       setName(menuItemToEdit?.name);
+
+      setServingDate(
+        format(new Date(menuItemToEdit?.serving_date), "yyyy-MM-dd")
+      );
     }
   }, [menuItemToEdit]);
 
@@ -19,11 +26,16 @@ const MenuEdit = ({ menuItemToEdit, setIsEdit }) => {
         setError("Menu name is required.");
         return;
       }
+      if (!servingDate.trim()) {
+        setError("Menu Serving date is required.");
+        return;
+      }
 
       const response = await axios.put(
         `${import.meta.env.VITE_API_URL}/menu/${menuItemToEdit.id}`,
         {
           name,
+          serving_date: servingDate,
         },
         {
           headers: {
@@ -57,6 +69,21 @@ const MenuEdit = ({ menuItemToEdit, setIsEdit }) => {
       <div className="container border border-gray-200 p-4 my-4 rounded">
         <h2 className="text-lg font-bold mb-2">Add Daily Menu Options</h2>
         <form onSubmit={(e) => e.preventDefault()}>
+          <div className="mb-4">
+            <label
+              htmlFor="date"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Date:
+            </label>
+            <input
+              type="date"
+              value={servingDate}
+              onChange={(e) => setServingDate(e.target.value)}
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              required
+            />
+          </div>
           <div className="mb-4">
             <label
               htmlFor="itemName"
