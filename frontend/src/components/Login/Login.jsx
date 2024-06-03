@@ -76,7 +76,7 @@ const Login = () => {
               </div>
               {errorMessage && <p className="text-red-500">{errorMessage}</p>}
               <div className="flex items-center justify-between gap-4"></div>
-              <div className="!mt-10">
+              <div className="">
                 <button
                   type="submit"
                   className="w-full py-2.5 px-4 text-sm rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"

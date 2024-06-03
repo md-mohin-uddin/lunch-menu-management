@@ -31,16 +31,16 @@ const Registration = () => {
 
   return (
     <>
-      <div className="bg-grey-lighter min-h-screen flex flex-col">
-        <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-          <div className="bg-white px-6 py-2 rounded shadow-md text-black w-full">
+      <div className="bg-gray-50 font-[sans-serif] text-[#333]">
+        <div className="min-h-screen flex flex-col items-center justify-center py-6 px-4">
+          <div className="max-w-md w-full border py-8 px-6 rounded border-gray-300 bg-white">
             <h1 className="mb-8 text-3xl font-extrabold text-center">
               Register
             </h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="mt-10 space-y-4">
               <input
                 type="text"
-                className="block border border-grey-light w-full p-3 rounded mb-4"
+                className="w-full text-sm px-4 py-3 rounded outline-none border-2 focus:border-blue-500"
                 name="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -54,7 +54,7 @@ const Registration = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
                 required
-                className="block border border-grey-light w-full p-3 rounded mb-4"
+                className="w-full text-sm px-4 py-3 rounded outline-none border-2 focus:border-blue-500"
                 name="password"
               />
 
