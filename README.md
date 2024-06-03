@@ -53,7 +53,7 @@ This system simplifies the process of managing office lunch menus and streamline
 
 ## Database schema
 
-![DB_DIAGRAM](https://github.com/md-mohin-uddin/mission-2022/assets/71177978/4f566646-d9c9-40c2-88c6-0841be26ec62)
+![DB_DIAGRAM](https://github.com/md-mohin-uddin/lunch-menu-management/DB_DIAGRAM.png)
 
 ## SQL File
 1. **Sample Admin**: `username: admin , password: 123456`
